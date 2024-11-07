@@ -9,7 +9,7 @@ spec:
     - name: nginx
       image: docker.io/nginx
     - name: mongo
-      image: docker.io/mongo
+      image: docker.io/mongo:4.0.8
 
 
  
