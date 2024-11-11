@@ -1,0 +1,19 @@
+appVersion: 1
+kind: ReplicaSet
+metadata:
+  name: 01-replica
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: docker.io/nginx
