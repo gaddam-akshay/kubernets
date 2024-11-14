@@ -15,26 +15,30 @@ spec:
   containers:
     - name: debug
       image: rkalluru/debug
+# ---
+# # Normal Role
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: Role
+# metadata:
+#   namespace: default
+#   name: defauld-ns-pod-reder
+# rules:
+#   - apiGroups: [""]
+#     resources: ["pods"]
+#     verbs: ["get","watch","list"]
 ---
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: default
-  name: defauld-ns-pod-reder
-rules:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["get","watch","list"]
----
+# Namespace specific role
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: defauld-ns-pod-reder-debug-pod
+  name: Cluster-ns-pod-reder-debug-pod
+  namespace: kube-system
 subjects:
   - kind: ServiceAccount
     name: debug
     namespace: default 
 roleRef:
-  kind: Role
-  name: defauld-ns-pod-reder
+  kind: ClusterRole
+  name: view
   apiGroup: rbac.authorization.k8s.io
+
