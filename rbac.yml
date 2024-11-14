@@ -26,7 +26,7 @@ rules:
     resources: ["pods"]
     verbs: ["get","watch","list"]
 ---
-aipVersion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: defauld-ns-pod-reder-debug-pod
