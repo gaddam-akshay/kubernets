@@ -11,12 +11,12 @@ metadata:
   name: debug
   namespace: default
 spec:
-  ServiceAccountName: debug
+  serviceAccountName: debug
   containers:
     - name: debug
       image: rkulluru/debug
 ---
-apiversion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: default
