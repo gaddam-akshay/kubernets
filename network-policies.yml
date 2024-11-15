@@ -51,8 +51,8 @@ spec:
   ingress:
   - from:
     - namespaceSelector:
-      matchLabels:
-        project: demo
+        matchLabels:
+          project: demo
     - podSelector:
         matchLabels:
           app: ui
