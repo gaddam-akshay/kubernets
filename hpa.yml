@@ -42,7 +42,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: dep-php-apache
+    name: php-apache
   minReplicas: 1
   maxReplicas: 10
   metrics:
