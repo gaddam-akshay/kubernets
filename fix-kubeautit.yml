@@ -4,9 +4,7 @@ metadata:
   name: block-all-network
   namespace: default
 spec:
-  podSelector:
-    matchLabels:
-      app: api
+  podSelector: {}
   policyTypes:
-  - Ingress
-  - Egress
+    - Ingress
+    - Egress
