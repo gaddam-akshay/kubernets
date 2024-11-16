@@ -9,6 +9,8 @@ kind: deployment
 metadata:
   name: test-psp
   namespace: Pod-Sec-Policy
+  labels:
+    app: nginx
 spec:
   replicas: 1
   selector:
