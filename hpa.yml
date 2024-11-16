@@ -15,7 +15,7 @@ spec:
         run: pod-php-apache
     spec:
       containers:
-      - name: p1-php-apache
+      - name: p1-php-apache-1
         image: docker.io/nginx
         resources:
           limits:
