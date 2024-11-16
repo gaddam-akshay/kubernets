@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: dep-php-apache
   labels:
-    run: dep-php-apache 
+    run: php-apache 
 spec:
   replicas: 3
   selector: 
     matchLabels:
-      run: pod-php-apache
+      run: php-apache
   template:
     metadata:
       labels:
-        run: pod-php-apache
+        run: php-apache
     spec:
       containers:
         - name: pod-php-apache
@@ -25,12 +25,12 @@ kind: Service
 metadata:
   name: php-apache
   labels:
-    run: svc-php-apache
+    run: php-apache
 spec:
   ports:
   - port: 80
   selector:
-    run: dep-php-apache
+    run: php-apache
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
