@@ -17,8 +17,6 @@ spec:
       containers:
       - name: p1-php-apache
         image: docker.io/nginx
-        ports:
-        - containerPort: 8080
         resources:
           limits:
             cpu: 500m
