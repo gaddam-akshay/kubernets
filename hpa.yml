@@ -33,6 +33,7 @@ spec:
   ports:
   - port: 8080
     targetPort: 8080
+    protocol: TCP
   selector:
     run: dep-php-apache
 ---
