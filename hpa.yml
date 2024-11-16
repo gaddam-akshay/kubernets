@@ -15,7 +15,7 @@ spec:
         run: php-apache
     spec:
       containers:
-        - name: pod-php-apache
+        - name: php-apache
           image: registry.k8s.io/hpa-example
           ports:
             - containerPort: 80
@@ -35,9 +35,9 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-php-apache
+  name: php-apache
   labels:
-    run: hpa-php-apache
+    run: php-apache
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
