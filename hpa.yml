@@ -15,15 +15,15 @@ spec:
         run: pod-php-apache
     spec:
       containers:
-        - name: p1-php-apache
-          image: registry.k8s.io/hpa-example
-          ports:
-          - containerPort: 80
-          resource:
-            limits:
-              cpu: 500m
-            requests:
-              cpu: 200m
+      - name: p1-php-apache
+        image: registry.k8s.io/hpa-example
+        ports:
+        - containerPort: 80
+        resource:
+          limits:
+            cpu: 500m
+        requests:
+            cpu: 200m
 ---
 apiVersion: v1
 kind: Service
