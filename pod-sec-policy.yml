@@ -8,7 +8,7 @@ metadata:
     pod-security.kubernetes.io/warn: privileged
 
 ---
-apiVersion: v1
+apiVersion: app/v1
 kind: Deployment
 metadata:
   name: test-psp
