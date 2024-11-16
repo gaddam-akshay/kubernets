@@ -32,7 +32,7 @@ spec:
   selector:
     run: dep-php-apache
 ---
-appVersion: autoscaling/v2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: php-apache
