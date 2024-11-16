@@ -5,8 +5,11 @@ metadata:
   namespace: default
 spec:
   podSelector: {}
+  egress:
+  - {}
+  ingress:
+  - {}
   policyTypes:
     - Ingress
-        - {}
     - Egress
-        - {}
+
