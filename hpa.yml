@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: dep-php-apache
   labels:
-    run: svc-php-apache 
+    run: dep-php-apache 
 spec:
   replicas: 1
   selector: 
@@ -35,7 +35,7 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: php-apache
+  name: hpa-php-apache
   labels:
     run: hpa-php-apache
 spec:
