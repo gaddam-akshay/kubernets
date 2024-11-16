@@ -24,7 +24,7 @@ spec:
     metadata:
       labels:
         app: nginx
-  spec:
-    containers:
-      - name: nginx
-        image: docker.io/nginx
+    spec:
+      containers:
+        - name: nginx
+          image: docker.io/nginx
