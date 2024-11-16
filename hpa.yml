@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-php-apache
+  labels:
+    run: svc-php-apache 
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      run: pod-php-apache
+  template:
+    metadata:
+      labels:
+        run: pod-php-apache
+  spec:
+    containers:
+      - name: pod-php-apache
+        image: registory.k8s.io/hpa-example
+        ports:
+          - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-apache
+  labels:
+    run: svc-php-apache
+spec:
+  ports:
+  - port: 80
+  selector:
+    run: dep-php-apache
+---
+appVersion: autoscalling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: php-apache
+  labels:
+    run: hpa-php-apache
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: dep-php-apache
+  minReplicas: 1
+  maxReplicas: 10
+  matric:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utlization
+        averageUtlization: 50
