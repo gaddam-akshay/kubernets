@@ -7,6 +7,28 @@ metadata:
     pod-security.kubernetes.io/audit: privileged
     pod-security.kubernetes.io/warn: privileged
 ---
+apiVersion: policy/v1
+kind: PodSecurityPolicy
+metadata:
+  name: test-psp
+spec:
+  privileged: false
+  volumes:
+    - 'configMap'
+    - 'secret'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  seLinux:
+    rule: 'RunAsAny'
+  runAsUser:
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'RunAsAny'
+  fsGroup:
+    rule: 'RunAsAny'
+
+---
 apiVersion: v1
 kind: deployment
 metadata:
