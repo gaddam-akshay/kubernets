@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-php-apache
+  name: php-apache
   labels:
     run: php-apache 
 spec:
   replicas: 3
   selector: 
     matchLabels:
-      run: dep-php-apache
+      run: php-apache
   template:
     metadata:
       labels:
