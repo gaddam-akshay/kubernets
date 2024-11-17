@@ -1,0 +1,11 @@
+apiversion: v1
+kind: Pod
+metatada:
+  name: nginx
+  labels:
+    appType: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+  nodeName: ip-192-168-22-6.ec2.internal
