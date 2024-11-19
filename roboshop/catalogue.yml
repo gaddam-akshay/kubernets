@@ -10,3 +10,45 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: catalogue
+  namespace: roboshop
+  labels:
+    appName: catalogue
+spec:
+  containers:
+    - name: catalogue
+      image: public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue
+      env:
+      - name: mongo_url
+        value: "mongodb://mongo-ip:27017/catalogue"
+      - name: mongo
+        value: "true"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-data
+  namespace: roboshop
+  labels:
+    appName: catalogue
+spec:
+  template:
+    spec:
+      containers:
+      - name: catalouge-data-creation
+        image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+        env:
+        - name: DB_TYPE
+          value: mongo
+        - name: APP_GET_URL
+          value: "https://github.com/roboshop-devops-project-v3/catalogue"
+        - name: DB_HOST
+          value: <mongo_dbs_record>
+        - name: SCHEMA_FILE
+          value: db/master-data.js  
+      restartPolicy: Never
+      backoffLimit: 4

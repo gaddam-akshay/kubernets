@@ -22,3 +22,25 @@ spec:
   containers:
     - name: frontend
       image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
+      env:
+      - name: catalogue_host
+        value: "catalogue"
+      - name: catalogue_port
+        value: "8080"
+      - name: user_host
+        value: "user"
+      - name: user_port
+        value: "8080"
+      - name: cart_host
+        value: "cart"
+      - name: cart_port
+        value: "8080"
+      - name: shipping_host
+        value: "shipping"
+      - name: shipping_port
+        value: "8080"
+      - name: payment_host
+        value: "shipping"
+      - name: payment_port
+        value: "8080"
+

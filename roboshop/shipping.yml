@@ -10,3 +10,45 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shipping
+  namespace: roboshop
+  labels:
+    appName: shipping
+spec:
+  containers:
+    - name: shipping
+      image: public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
+      env:
+      - name: CART_ENDPOINT
+        value: "cart-ip:cart-port"
+      - name: DB_HOST
+        value: "mysql-ip"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-data
+  namespace: roboshop
+  labels:
+    appName: shipping
+spec:
+  template:
+    spec:
+      containers:
+      - name: shipping-data-creation
+        image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+        env:
+        - name: DB_HOST
+          value: mysql-ip
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASS
+          value: "RoboShop@1"
+        - name: SCHEMA_FILE
+          value: db/schema.sql
+      restartPolicy: Never
+  backoffLimit: 4

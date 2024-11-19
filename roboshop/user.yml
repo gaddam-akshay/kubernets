@@ -10,3 +10,23 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: user
+  namespace: roboshop
+  labels:
+    appName: user
+spec:
+  containers:
+    - name: user
+      image: public.ecr.aws/w8x4g9h7/roboshop-v3/user
+      env:
+      - name: catalogue_host
+      - name: mongo_url
+        value: "mongodb://mongo-ip:27017/catalogue"
+      - name: mongo
+        value: "true"
+      - name:   REDIS_URL
+        value: "redis://redis-ip:6379"
